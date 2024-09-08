@@ -1,0 +1,244 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.screen {
+	display: none;
+	text-align: center;
+	margin-top: 50px;
+}
+
+#introScreen,
+#joinScreen,
+#difficultyScreen,
+#startScreen {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 80vh;
+	width: 80%;
+	margin: 0;
+	background-color: #4396a1cb;
+	border-radius: 10px;
+}
+
+#joinScreen h2 {
+	font-family: "Poppins", sans-serif;
+	font-size: 28px;
+	color: #800020; /* Deep Blue for the heading */
+	text-shadow: 0 0 2px #ffd700, /* Gold */ 0 0 4px #ffd700, 0 0 6px #ffd700,
+		0 0 8px #b8860b; /* Darker Gold */
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.join-wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+}
+
+#playerName {
+	font-family: "Poppins", sans-serif;
+	font-size: 16px;
+	padding: 10px;
+	border: 2px solid #ffd700; /* Gold border */
+	border-radius: 5px;
+	background-color: #ffffff; /* White background */
+	color: #3b79bb; /* Deep Blue text */
+	margin-right: 10px;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+	transition: all 0.3s ease;
+}
+
+#playerName::placeholder {
+	color: #3b79bb; /* Deep Blue placeholder text */
+	opacity: 0.8; /* Slightly transparent */
+}
+
+#joinButton {
+	font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	color: #ffffff; /* White text for contrast */
+	background-color: #3b79bb; /* Deep Blue background */
+	border: 2px solid #ffd700; /* Gold border */
+	padding: 10px 20px;
+	border-radius: 5px;
+	margin: 0;
+
+	cursor: pointer;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+	transition: all 0.3s ease;
+}
+
+#joinButton:hover {
+	background-color: #b8860b; /* Darker Gold on hover */
+	color: #3b79bb; /* Deep Blue text on hover */
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700; /* Brighter gold glow on hover */
+}
+
+#difficultyScreen p {
+	font-family: "Poppins", sans-serif;
+	font-size: 30px;
+	color: #3b79bb; /* Deep Blue */
+	text-shadow: 0 0 2px #ffd700, 0 0 4px #ffd700, 0 0 6px #ffd700,
+		0 0 8px #b8860b; /* Gold and Darker Gold */
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#easyButton,
+#hardButton {
+	font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	color: #ffffff; /* White text for contrast */
+	background-color: #3b79bb; /* Deep Blue background */
+	border: 2px solid #ffd700; /* Gold border */
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+	transition: all 0.3s ease;
+	margin: 10px 0; /* Add margin between buttons */
+}
+
+#easyButton:hover,
+#hardButton:hover {
+	background-color: #b8860b; /* Darker Gold on hover */
+	color: #3b79bb; /* Deep Blue text on hover */
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700; /* Brighter gold glow on hover */
+}
+
+.game-container {
+	background-image: url(./assets/flags.jpg);
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+button {
+	margin-top: 20px;
+	padding: 10px 20px;
+	font-size: 16px;
+}
+
+#startButton {
+	font-family: "Poppins", sans-serif;
+	font-size: 20px;
+	color: #ffffff; /* White text for contrast */
+	background-color: #800020; /* Burgundy background */
+	border: 2px solid #ffd700; /* Gold border */
+	padding: 10px 20px;
+	border-radius: 5px;
+	text-transform: uppercase;
+	cursor: pointer;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+	transition: all 0.3s ease;
+}
+
+#startButton:hover {
+	background-color: #b8860b; /* Darker Gold on hover */
+	color: #1e6a98; /* Burgundy text on hover */
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700; /* Brighter gold glow on hover */
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
+
+.neon-title {
+	font-family: "Poppins", sans-serif;
+	font-size: 48px;
+	color: #800020; /* Burgundy */
+	text-shadow: 0 0 2px #ffd700, /* Gold */ 0 0 4px #ffd700, 0 0 6px #ffd700,
+		0 0 8px #b8860b; /* Darker Gold */
+	animation: neon-glow 1.5s ease-in-out infinite alternate;
+	text-align: center;
+	margin: 50px 0;
+}
+
+@keyframes neon-glow {
+	from {
+		text-shadow: 0 0 2px #ffd700, 0 0 4px #ffd700, 0 0 6px #ffd700,
+			0 0 8px #b8860b;
+	}
+	to {
+		text-shadow: 0 0 4px #ffd700, 0 0 6px #ffd700, 0 0 8px #ffd700,
+			0 0 10px #b8860b;
+	}
+}
+
+/* Styling for the start screen */
+#startScreen {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 6rem;
+	height: 80vh;
+	width: 80%;
+	margin: 0 auto;
+	background-color: #4396a1cb; /* Match the other screen backgrounds */
+	border-radius: 10px;
+	text-align: center;
+}
+
+/* Heading styling for the 'Match' title */
+#startScreen h2 {
+	font-family: "Poppins", sans-serif;
+	font-size: 52px;
+	color: #3b79bb;
+	text-shadow: 0 0 2px #ffd700, 0 0 4px #ffd700, 0 0 6px #ffd700,
+		0 0 8px #b8860b;
+	margin-bottom: 20px;
+}
+
+/* Styling for the flag image */
+#flagImage {
+	width: 200px;
+	height: auto;
+	border: 2px solid #ffd700;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+}
+
+/* Styling for the list of options */
+#flagContainer ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+#flagContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 3rem;
+}
+
+#flagContainer li:hover {
+	background-color: #b8860b; /* Darker Gold on hover */
+	color: #3b79bb; /* Deep Blue text on hover */
+	box-shadow: 0 0 5px #ffd700;
+}
+
+.flag {
+	width: 15rem;
+	height: 15rem;
+}
+
+#player-info {
+	font-family: "Poppins", sans-serif;
+	font-size: 30px;
+	color: #3b79bb; /* Deep Blue */
+	text-shadow: 0 0 2px #ffd700, 0 0 4px #ffd700, 0 0 6px #ffd700,
+		0 0 8px #b8860b; /* Gold and Darker Gold */
+	text-align: center;
+	margin-bottom: 20px;
+}

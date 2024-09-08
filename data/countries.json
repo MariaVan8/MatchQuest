@@ -1,0 +1,52 @@
+[
+	{
+		"name": "USA",
+		"capital": "Washington, D.C.",
+		"flag": "./assets/usa.png"
+	},
+	{
+		"name": "Canada",
+		"capital": "Ottawa",
+		"flag": "./assets/canada.png"
+	},
+	{
+		"name": "China",
+		"capital": "Beijing",
+		"flag": "./assets/china.png"
+	},
+	{
+		"name": "England",
+		"capital": "London",
+		"flag": "./assets/uk.png"
+	},
+	{
+		"name": "France",
+		"capital": "Paris",
+		"flag": "./assets/france.png"
+	},
+	{
+		"name": "Germany",
+		"capital": "Berlin",
+		"flag": "./assets/germany.png"
+	},
+	{
+		"name": "India",
+		"capital": "New Delhi",
+		"flag": "./assets/india.png"
+	},
+	{
+		"name": "Italy",
+		"capital": "Rome",
+		"flag": "./assets/italy.png"
+	},
+	{
+		"name": "Japan",
+		"capital": "Tokyo",
+		"flag": "./assets/japan.png"
+	},
+	{
+		"name": "Spain",
+		"capital": "Madrid",
+		"flag": "./assets/spain.png"
+	}
+]

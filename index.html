@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="styles.css" />
+		<title>Flag Hunter</title>
+	</head>
+	<body>
+		<div class="game-container">
+			<div
+				id="introScreen"
+				class="screen">
+				<h1 class="neon-title">Flag Hunter</h1>
+				<button id="startButton">Start Game</button>
+			</div>
+
+			<div
+				id="joinScreen"
+				class="screen"
+				style="display:none;">
+				<h2>Enter your name</h2>
+				<div class="join-wrapper">
+					<input
+						type="text"
+						id="playerName"
+						placeholder="Enter your name" />
+					<button id="joinButton">Join</button>
+				</div>
+			</div>
+
+			<div
+				id="difficultyScreen"
+				class="screen"
+				style="display:none;">
+				<h2></h2>
+				<button id="easyButton">Easy</button>
+				<button id="hardButton">Hard</button>
+			</div>
+
+			<div
+				id="playScreen"
+				class="screen"
+				style="display:none;">
+				<h2>Game On!</h2>
+				<button id="playButton">PLAY</button>
+			</div>
+
+			<div
+				id="startScreen"
+				class="screen"
+				style="display:none;">
+				<h2>Match</h2>
+				<div id="flagContainer">
+					<div class="container"></div>
+					<div id="player-info"></div>
+					<div id="game-board"></div>
+					<div id="flag-display"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="./script.js"></script>
+</html>
