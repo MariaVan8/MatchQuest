@@ -1,6 +1,12 @@
-// Declare selectedButton and currentFlag in the global scope
+// Declare selectedButton, currentFlag, and player lives in the global scope
 let selectedButton = null;
 let currentFlag = null;
+let usedCountries = [];
+let playerLives = 3; // Start with 3 lives
+
+// Add the paths for the heart images
+const redHeart = "./assets/red-heart.png"; // Path to the red heart image
+const grayHeart = "./assets/gray-heart.png"; // Path to the gray heart image
 
 document.getElementById("startButton").addEventListener("click", function () {
 	showScreen("joinScreen");
@@ -9,17 +15,12 @@ document.getElementById("startButton").addEventListener("click", function () {
 document.getElementById("joinButton").addEventListener("click", function () {
 	const playerName = document.getElementById("playerName").value;
 	if (playerName) {
-		// Create a new player with the entered name
 		player = new Player(playerName);
-
-		// Update the welcome message in the difficulty screen
 		showScreen("difficultyScreen");
 		const welcomeMessage = document.createElement("p");
 		welcomeMessage.innerText = `Welcome, ${playerName}! Please choose a difficulty:`;
 		const heading = document.querySelector("#difficultyScreen h2");
 		heading.insertAdjacentElement("afterend", welcomeMessage);
-
-		// Update the player name on the startScreen
 		const playerInfo = document.getElementById("player-info");
 		playerInfo.textContent = `${player.name}: ${player.score}`;
 	} else {
@@ -52,6 +53,8 @@ function startGame(difficulty) {
 
 	// Fetch countries.json data and start the game
 	fetchCountries();
+	// Initialize the player's lives
+	updateLivesDisplay();
 }
 
 // Player class
@@ -84,43 +87,47 @@ function fetchCountries() {
 	fetch("./data/countries.json")
 		.then((response) => response.json())
 		.then((data) => {
-			// Assign the fetched data to the global countries variable
 			countries = data;
-			initGame(countries); // Initialize the game with the fetched countries
+			initGame(countries);
 		})
 		.catch((error) => {
 			console.error("Error loading countries:", error);
 		});
 }
 
+// Function to initialize the game
 function initGame(countries) {
-	// Shuffle the countries array
-	let shuffledCountries = shuffle(countries.slice());
+	displayNewFlag();
+}
 
-	// Select the correct country (first in the shuffled array)
-	let correctCountry = shuffledCountries[0];
+function displayNewFlag() {
+	let availableCountries = countries.filter(
+		(country) => !usedCountries.includes(country.name)
+	);
 
-	// Set currentFlag to the correct country
+	if (availableCountries.length === 0) {
+		alert("Game Over! You've seen all the flags.");
+		return;
+	}
+
+	let shuffledAvailableCountries = shuffle(availableCountries.slice());
+	let correctCountry = shuffledAvailableCountries[0];
 	currentFlag = correctCountry;
+	usedCountries.push(correctCountry.name);
 
-	// Select 3 random incorrect countries (from the rest of the array)
-	let incorrectCountries = shuffledCountries.slice(1); // Exclude the correct answer
-	incorrectCountries = shuffle(incorrectCountries).slice(0, 3); // Pick 3 random incorrect countries
+	let incorrectCountries = shuffle(
+		countries.filter((country) => country.name !== correctCountry.name)
+	).slice(0, 3);
 
-	// Combine correct answer and incorrect answers
-	let options = shuffle([correctCountry, ...incorrectCountries]); // Shuffle so correct answer is randomly placed
+	let options = shuffle([correctCountry, ...incorrectCountries]);
 
-	// Display the flag of the correct country
 	displayFlag(correctCountry.flag);
-
-	// Create buttons for the 4 options (1 correct, 3 incorrect)
 	displayOptions(options);
 }
 
-// Function to display the flag
 function displayFlag(flagUrl) {
 	let flagDisplay = document.getElementById("flag-display");
-	flagDisplay.innerHTML = ""; // Clear the previous flag
+	flagDisplay.innerHTML = "";
 
 	let flagImage = document.createElement("img");
 	flagImage.src = flagUrl;
@@ -128,10 +135,9 @@ function displayFlag(flagUrl) {
 	flagDisplay.appendChild(flagImage);
 }
 
-// Function to display the 4 options
 function displayOptions(options) {
 	let gameBoard = document.getElementById("game-board");
-	gameBoard.innerHTML = ""; // Clear the previous buttons
+	gameBoard.innerHTML = "";
 
 	options.forEach((country) => {
 		let button = document.createElement("button");
@@ -142,19 +148,13 @@ function displayOptions(options) {
 	});
 }
 
-// Function to handle button clicks
 function handleButtonClicked() {
 	if (!selectedButton) {
-		// First button clicked
 		selectedButton = this;
-		console.log("First button clicked");
-
-		// Check for match
 		setTimeout(checkForMatch, 500);
 	}
 }
 
-// Function to check if the selected option matches the current flag
 function checkForMatch() {
 	if (
 		currentFlag &&
@@ -163,37 +163,63 @@ function checkForMatch() {
 	) {
 		console.log("Match!");
 		player.incrementScore();
-		updatePlayerInfo(); // Update player score on the screen
+		updatePlayerInfo();
 	} else {
 		console.log("No match!");
+		playerLives--; // Decrement the player's lives
+		updateLivesDisplay(); // Update the hearts display
+
+		if (playerLives === 0) {
+			alert("Game Over! You've lost all your lives.");
+			return;
+		}
 	}
 
-	// After checking, show the next flag
 	displayNewFlag();
-	selectedButton = null; // Reset selectedButton for the next round
+	selectedButton = null;
 }
 
 // Function to display a new flag and options
 function displayNewFlag() {
-	// Shuffle the countries array
-	let shuffledCountries = shuffle(countries.slice());
+	let availableCountries = countries.filter(
+		(country) => !usedCountries.includes(country.name)
+	);
 
-	// Select the correct country (first in the shuffled array)
-	let correctCountry = shuffledCountries[0];
+	if (availableCountries.length === 0) {
+		alert("Game Over! You've seen all the flags.");
+		return;
+	}
+
+	let shuffledAvailableCountries = shuffle(availableCountries.slice());
+	let correctCountry = shuffledAvailableCountries[0];
 	currentFlag = correctCountry;
+	usedCountries.push(correctCountry.name);
 
-	// Select 3 random incorrect countries (from the rest of the array)
-	let incorrectCountries = shuffledCountries.slice(1); // Exclude the correct answer
-	incorrectCountries = shuffle(incorrectCountries).slice(0, 3); // Pick 3 random incorrect countries
+	let incorrectCountries = shuffle(
+		countries.filter((country) => country.name !== correctCountry.name)
+	).slice(0, 3);
 
-	// Combine correct answer and incorrect answers
-	let options = shuffle([correctCountry, ...incorrectCountries]); // Shuffle so correct answer is randomly placed
+	let options = shuffle([correctCountry, ...incorrectCountries]);
 
-	// Display the flag of the correct country
 	displayFlag(correctCountry.flag);
-
-	// Create buttons for each option (1 correct, 3 incorrect)
 	displayOptions(options);
+}
+
+// Function to update lives (heart display)
+function updateLivesDisplay() {
+	const livesContainer = document.getElementById("lives-container");
+	livesContainer.innerHTML = ""; // Clear the previous hearts
+
+	for (let i = 0; i < 3; i++) {
+		let heartImage = document.createElement("img");
+		if (i < playerLives) {
+			heartImage.src = redHeart;
+		} else {
+			heartImage.src = grayHeart;
+		}
+		heartImage.className = "heart";
+		livesContainer.appendChild(heartImage);
+	}
 }
 
 // Shuffle function
