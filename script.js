@@ -5,8 +5,8 @@ let usedCountries = [];
 let playerLives = 3; // Start with 3 lives
 
 // Add the paths for the heart images
-const redHeart = "./assets/red-heart.png"; // Path to the red heart image
-const grayHeart = "./assets/gray-heart.png"; // Path to the gray heart image
+const redHeart = "./assets/red-heart.png";
+const grayHeart = "./assets/gray-heart.png";
 
 document.getElementById("startButton").addEventListener("click", function () {
 	showScreen("joinScreen");
@@ -34,6 +34,7 @@ document.getElementById("easyButton").addEventListener("click", function () {
 
 document.getElementById("hardButton").addEventListener("click", function () {
 	startGame("hard");
+	console.log("Hard mode selected");
 });
 
 document.getElementById("playButton").addEventListener("click", function () {
@@ -52,9 +53,12 @@ function startGame(difficulty) {
 	showScreen("startScreen");
 
 	// Fetch countries.json data and start the game
-	fetchCountries();
+	fetchCountries(difficulty);
 	// Initialize the player's lives
 	updateLivesDisplay();
+
+	// Pass the difficulty to be used in the game
+	player.difficulty = difficulty;
 }
 
 // Player class
@@ -83,12 +87,12 @@ updatePlayerInfo();
 let countries = [];
 
 // Function to fetch countries from JSON
-function fetchCountries() {
+function fetchCountries(difficulty) {
 	fetch("./data/countries.json")
 		.then((response) => response.json())
 		.then((data) => {
 			countries = data;
-			initGame(countries);
+			initGame(countries, difficulty);
 		})
 		.catch((error) => {
 			console.error("Error loading countries:", error);
@@ -96,8 +100,8 @@ function fetchCountries() {
 }
 
 // Function to initialize the game
-function initGame(countries) {
-	displayNewFlag();
+function initGame(countries, difficulty) {
+	displayNewFlag(difficulty);
 }
 
 function displayNewFlag() {
@@ -122,7 +126,8 @@ function displayNewFlag() {
 	let options = shuffle([correctCountry, ...incorrectCountries]);
 
 	displayFlag(correctCountry.flag);
-	displayOptions(options);
+	displayOptions(options, difficulty);
+	console / log("DIFFICULTY", difficulty);
 }
 
 function displayFlag(flagUrl) {
@@ -135,13 +140,23 @@ function displayFlag(flagUrl) {
 	flagDisplay.appendChild(flagImage);
 }
 
-function displayOptions(options) {
+function displayOptions(options, difficulty) {
 	let gameBoard = document.getElementById("game-board");
 	gameBoard.innerHTML = "";
 
 	options.forEach((country) => {
 		let button = document.createElement("button");
-		button.textContent = country.name;
+
+		// If difficulty is hard, show both the country and the capital
+		if (difficulty === "hard") {
+			console.log("Hard mode selected!");
+			button.textContent = `${country.name}, ${country.capital}`; // Show both country and capital
+			button.dataset.capital = country.capital; // Store capital in the dataset
+		} else {
+			// In easy mode, show only the country name
+			button.textContent = country.name;
+		}
+
 		button.dataset.country = country.name;
 		button.addEventListener("click", handleButtonClicked);
 		gameBoard.appendChild(button);
@@ -155,32 +170,56 @@ function handleButtonClicked() {
 	}
 }
 
-function checkForMatch() {
-	if (
-		currentFlag &&
-		selectedButton &&
-		selectedButton.dataset.country === currentFlag.name
-	) {
-		console.log("Match!");
-		player.incrementScore();
-		updatePlayerInfo();
-	} else {
-		console.log("No match!");
-		playerLives--; // Decrement the player's lives
-		updateLivesDisplay(); // Update the hearts display
+function checkForMatch(difficulty) {
+	if (difficulty === "hard") {
+		// Check for lowercase "hard"
+		// In hard mode, check both country and capital
+		if (
+			currentFlag &&
+			selectedButton &&
+			selectedButton.dataset.country === currentFlag.name &&
+			selectedButton.dataset.capital === currentFlag.capital
+		) {
+			console.log("Match!");
+			player.incrementScore();
+			updatePlayerInfo();
+		} else {
+			console.log("No match!");
+			playerLives--; // Decrement the player's lives
+			updateLivesDisplay(); // Update the hearts display
 
-		if (playerLives === 0) {
-			alert("Game Over! You've lost all your lives.");
-			return;
+			if (playerLives === 0) {
+				alert("Game Over! You've lost all your lives.");
+				return;
+			}
+		}
+	} else {
+		// In easy mode, check only the country name
+		if (
+			currentFlag &&
+			selectedButton &&
+			selectedButton.dataset.country === currentFlag.name
+		) {
+			console.log("Match!");
+			player.incrementScore();
+			updatePlayerInfo();
+		} else {
+			console.log("No match!");
+			playerLives--; // Decrement the player's lives
+			updateLivesDisplay(); // Update the hearts display
+
+			if (playerLives === 0) {
+				alert("Game Over! You've lost all your lives.");
+				return;
+			}
 		}
 	}
 
-	displayNewFlag();
+	displayNewFlag(difficulty);
 	selectedButton = null;
 }
 
-// Function to display a new flag and options
-function displayNewFlag() {
+function displayNewFlag(difficulty) {
 	let availableCountries = countries.filter(
 		(country) => !usedCountries.includes(country.name)
 	);
@@ -202,7 +241,7 @@ function displayNewFlag() {
 	let options = shuffle([correctCountry, ...incorrectCountries]);
 
 	displayFlag(correctCountry.flag);
-	displayOptions(options);
+	displayOptions(options, difficulty); // Pass the difficulty to displayOptions
 }
 
 // Function to update lives (heart display)
