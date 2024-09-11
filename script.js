@@ -154,6 +154,7 @@ function displayCountryOptions(options) {
 
 	options.forEach((country) => {
 		let button = document.createElement("button");
+		button.classList.add("countryBtn");
 		button.textContent = country.name;
 		button.dataset.country = country.name;
 		button.addEventListener("click", handleCountryClick);
@@ -175,6 +176,7 @@ function displayCountryAndCapitalOptions(options) {
 	options.forEach((country) => {
 		// Country buttons
 		let countryButton = document.createElement("button");
+		countryButton.classList.add("countryBtn");
 		countryButton.textContent = country.name;
 		countryButton.dataset.country = country.name;
 		countryButton.addEventListener("click", handleCountryClick);
@@ -200,6 +202,7 @@ function displayCountryAndCapitalOptions(options) {
 
 	capitalOptions.forEach((capital) => {
 		let capitalButton = document.createElement("button");
+		capitalButton.classList.add("capitalBtn");
 		capitalButton.textContent = capital;
 		capitalButton.dataset.capital = capital;
 		capitalButton.addEventListener("click", handleCapitalClick);
@@ -284,10 +287,10 @@ function checkForMatch(difficulty) {
 	displayNewFlag(difficulty);
 }
 
-// Function to update lives (heart display)
+// Function to update lives
 function updateLivesDisplay() {
 	const livesContainer = document.getElementById("lives-container");
-	livesContainer.innerHTML = ""; // Clear the previous hearts
+	livesContainer.innerHTML = "";
 
 	for (let i = 0; i < 3; i++) {
 		let heartImage = document.createElement("img");

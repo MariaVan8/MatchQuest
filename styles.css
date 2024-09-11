@@ -17,7 +17,7 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	height: 80vh;
+	height: 90vh;
 	width: 80%;
 	margin: 0;
 	background-color: #4396a1cb;
@@ -179,7 +179,7 @@ button {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-around;
 	height: 80vh;
 	width: 80%;
 	margin: 0 auto;
@@ -239,10 +239,167 @@ button {
 	text-shadow: 0 0 2px #ffd700, 0 0 4px #ffd700, 0 0 6px #ffd700,
 		0 0 8px #b8860b; /* Gold and Darker Gold */
 	text-align: center;
-	margin-bottom: 22px;
 }
 
 .heart {
 	width: 3rem;
 	height: 3rem;
+}
+
+.container {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.player-wrapper {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+/* Neon button style */
+.countryBtn {
+	background: #1e1e1e;
+	color: #fff;
+	font-size: 18px;
+	padding: 15px 40px;
+	margin: 20px;
+	text-transform: uppercase;
+	border: 2px solid transparent;
+	position: relative;
+	transition: all 0.3s ease;
+	letter-spacing: 2px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.countryBtn:before,
+.countryBtn:after {
+	content: "";
+	position: absolute;
+	width: 15px;
+	height: 2px;
+	background-color: #fff;
+	transition: all 0.3s ease;
+}
+
+.countryBtn:before {
+	top: 0;
+	left: 0;
+}
+
+.countryBtn:after {
+	bottom: 0;
+	right: 0;
+}
+
+.countryBtn span:before,
+.countryBtn span:after {
+	content: "";
+	position: absolute;
+	width: 2px;
+	height: 15px;
+	background-color: #fff;
+	transition: all 0.3s ease;
+}
+
+.countryBtn span:before {
+	top: 0;
+	right: 0;
+}
+
+.countryBtn span:after {
+	bottom: 0;
+	left: 0;
+}
+
+.countryBtn:hover {
+	background: #1e1e1e;
+	box-shadow: 0px 0px 20px 5px rgba(0, 255, 0, 0.7); /* Neon glow effect */
+	color: #00ff00;
+	border-color: #00ff00;
+}
+
+.countryBtn:hover:before,
+.countryBtn:hover:after {
+	background-color: #ff00ff;
+}
+
+.countryBtn:hover span:before,
+.countryBtn:hover span:after {
+	background-color: #00ffff;
+}
+
+/* Neon button style for capital buttons */
+.capitalBtn {
+	background: #2b2b2b;
+	color: #ffffff;
+	font-size: 18px;
+	padding: 15px 40px;
+	margin: 20px;
+	text-transform: uppercase;
+	border: 2px solid transparent;
+	position: relative;
+	transition: all 0.3s ease;
+	letter-spacing: 2px;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.capitalBtn:before,
+.capitalBtn:after {
+	content: "";
+	position: absolute;
+	width: 15px;
+	height: 2px;
+	background-color: #fff;
+	transition: all 0.3s ease;
+}
+
+.capitalBtn:before {
+	top: 0;
+	left: 0;
+}
+
+.capitalBtn:after {
+	bottom: 0;
+	right: 0;
+}
+
+.capitalBtn span:before,
+.capitalBtn span:after {
+	content: "";
+	position: absolute;
+	width: 2px;
+	height: 15px;
+	background-color: #fff;
+	transition: all 0.3s ease;
+}
+
+.capitalBtn span:before {
+	top: 0;
+	right: 0;
+}
+
+.capitalBtn span:after {
+	bottom: 0;
+	left: 0;
+}
+
+.capitalBtn:hover {
+	background: #2b2b2b;
+	box-shadow: 0px 0px 20px 5px rgba(0, 191, 255, 0.7);
+	color: #00bfff;
+	border-color: #00bfff;
+}
+
+.capitalBtn:hover:before,
+.capitalBtn:hover:after {
+	background-color: #ff1493;
+}
+
+.capitalBtn:hover span:before,
+.capitalBtn:hover span:after {
+	background-color: #00ff7f;
 }
