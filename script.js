@@ -216,19 +216,24 @@ function handleCountryClick() {
 		selectedCountryButton = this;
 	}
 
-	// Check if both country and capital are selected
-	if (selectedCountryButton && selectedCapitalButton) {
-		setTimeout(checkForMatch, 500, "hard");
+	// If we're in "easy" mode, we check for a match immediately after selecting the country
+	if (player.difficulty === "easy") {
+		setTimeout(() => checkForMatch("easy"), 500); // Pass "easy" to the match function
+	} else if (player.difficulty === "hard") {
+		// For "hard" mode, wait for both country and capital to be selected
+		if (selectedCountryButton && selectedCapitalButton) {
+			setTimeout(checkForMatch, 500, "hard");
+		}
 	}
 }
 
-// Function to handle capital click
+// Function to handle capital click (only in "hard" mode)
 function handleCapitalClick() {
 	if (!selectedCapitalButton) {
 		selectedCapitalButton = this;
 	}
 
-	// Check if both country and capital are selected
+	// In "hard" mode, we check for a match when both country and capital are selected
 	if (selectedCountryButton && selectedCapitalButton) {
 		setTimeout(checkForMatch, 500, "hard");
 	}
