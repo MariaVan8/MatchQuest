@@ -35,6 +35,7 @@ document.getElementById("easyButton").addEventListener("click", function () {
 
 document.getElementById("hardButton").addEventListener("click", function () {
 	startGame("hard");
+	document.getElementById("startScreen").classList.add("hard-mode"); // Add this line
 	console.log("Hard mode selected");
 });
 
@@ -42,10 +43,12 @@ document.getElementById("playButton").addEventListener("click", function () {
 	showScreen("playScreen");
 });
 
-// Function to show different screens
 function showScreen(screenId) {
 	const screens = document.querySelectorAll(".screen");
-	screens.forEach((screen) => (screen.style.display = "none"));
+	screens.forEach((screen) => {
+		screen.style.display = "none";
+		screen.classList.remove("hard-mode"); // Remove the hard-mode class if it exists
+	});
 	document.getElementById(screenId).style.display = "flex";
 }
 
@@ -242,6 +245,12 @@ function handleCapitalClick() {
 	}
 }
 
+function showGameOver() {
+	// Show the Game Over overlay
+	const gameOverOverlay = document.getElementById("gameOverOverlay");
+	gameOverOverlay.style.display = "flex"; // Show the overlay
+}
+
 // Function to check for match
 function checkForMatch(difficulty) {
 	if (difficulty === "hard") {
@@ -259,7 +268,7 @@ function checkForMatch(difficulty) {
 			updateLivesDisplay(); // Update the hearts display
 
 			if (playerLives === 0) {
-				alert("Game Over! You've lost all your lives.");
+				showGameOver();
 				return;
 			}
 		}
@@ -275,7 +284,7 @@ function checkForMatch(difficulty) {
 			updateLivesDisplay(); // Update the hearts display
 
 			if (playerLives === 0) {
-				alert("Game Over! You've lost all your lives.");
+				showGameOver();
 				return;
 			}
 		}
@@ -320,3 +329,25 @@ function shuffle(array) {
 	}
 	return array;
 }
+
+document
+	.getElementById("startOverButton")
+	.addEventListener("click", function () {
+		// Hide the Game Over overlay
+		const gameOverOverlay = document.getElementById("gameOverOverlay");
+		gameOverOverlay.style.display = "none";
+
+		// Reset game variables
+		playerLives = 3; // Reset player lives
+		usedCountries = []; // Reset used countries
+		selectedCountryButton = null;
+		selectedCapitalButton = null;
+		player.score = 0; // Reset the player's score
+
+		// Update the player info and lives display
+		updatePlayerInfo();
+		updateLivesDisplay();
+
+		// Show the difficulty screen to start over
+		showScreen("difficultyScreen");
+	});
