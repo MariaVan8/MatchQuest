@@ -2,51 +2,51 @@
 	{
 		"name": "USA",
 		"capital": "Washington, D.C.",
-		"flag": "./assets/usa.png"
+		"flag": "./assets/Icons/usa.png"
 	},
 	{
 		"name": "Canada",
 		"capital": "Ottawa",
-		"flag": "./assets/canada.png"
+		"flag": "./assets/Icons/canada.png"
 	},
 	{
 		"name": "China",
 		"capital": "Beijing",
-		"flag": "./assets/china.png"
+		"flag": "./assets/Icons/china.png"
 	},
 	{
 		"name": "England",
 		"capital": "London",
-		"flag": "./assets/uk.png"
+		"flag": "./assets/Icons/uk.png"
 	},
 	{
 		"name": "France",
 		"capital": "Paris",
-		"flag": "./assets/france.png"
+		"flag": "./assets/Icons/france.png"
 	},
 	{
 		"name": "Germany",
 		"capital": "Berlin",
-		"flag": "./assets/germany.png"
+		"flag": "./assets/Icons/germany.png"
 	},
 	{
 		"name": "India",
 		"capital": "New Delhi",
-		"flag": "./assets/india.png"
+		"flag": "./assets/Icons/india.png"
 	},
 	{
 		"name": "Italy",
 		"capital": "Rome",
-		"flag": "./assets/italy.png"
+		"flag": "./assets/Icons/italy.png"
 	},
 	{
 		"name": "Japan",
 		"capital": "Tokyo",
-		"flag": "./assets/japan.png"
+		"flag": "./assets/Icons/japan.png"
 	},
 	{
 		"name": "Spain",
 		"capital": "Madrid",
-		"flag": "./assets/spain.png"
+		"flag": "./assets/Icons/spain.png"
 	}
 ]

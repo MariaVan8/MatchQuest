@@ -3,11 +3,11 @@ let selectedCountryButton = null;
 let selectedCapitalButton = null;
 let currentFlag = null;
 let usedCountries = [];
-let playerLives = 3; // Start with 3 lives
+let playerLives = 3;
 
 // Add the paths for the heart images
-const redHeart = "./assets/red-heart.png"; // Path to the red heart image
-const grayHeart = "./assets/gray-heart.png"; // Path to the gray heart image
+const redHeart = "./assets/Icons/red-heart.png";
+const grayHeart = "./assets/Icons/gray-heart.png";
 
 document.getElementById("startButton").addEventListener("click", function () {
 	showScreen("joinScreen");
@@ -35,7 +35,7 @@ document.getElementById("easyButton").addEventListener("click", function () {
 
 document.getElementById("hardButton").addEventListener("click", function () {
 	startGame("hard");
-	document.getElementById("startScreen").classList.add("hard-mode"); // Add this line
+	document.getElementById("startScreen").classList.add("hard-mode");
 	console.log("Hard mode selected");
 });
 
@@ -47,7 +47,7 @@ function showScreen(screenId) {
 	const screens = document.querySelectorAll(".screen");
 	screens.forEach((screen) => {
 		screen.style.display = "none";
-		screen.classList.remove("hard-mode"); // Remove the hard-mode class if it exists
+		screen.classList.remove("hard-mode");
 	});
 	document.getElementById(screenId).style.display = "flex";
 }
@@ -55,13 +55,8 @@ function showScreen(screenId) {
 function startGame(difficulty) {
 	console.log("Selected Difficulty:", difficulty);
 	showScreen("startScreen");
-
-	// Fetch countries.json data and start the game
 	fetchCountries(difficulty);
-	// Initialize the player's lives
 	updateLivesDisplay();
-
-	// Pass the difficulty to be used in the game
 	player.difficulty = difficulty;
 }
 
@@ -76,7 +71,6 @@ class Player {
 	}
 }
 
-// Create a new player
 let player = new Player("Maria");
 
 // Update player info on the page
@@ -173,11 +167,9 @@ function displayCountryAndCapitalOptions(options) {
 	let countryBoard = document.createElement("div");
 	let capitalBoard = document.createElement("div");
 
-	// Store all capitals to randomly select incorrect ones
 	let allCapitals = countries.map((country) => country.capital);
 
 	options.forEach((country) => {
-		// Country buttons
 		let countryButton = document.createElement("button");
 		countryButton.classList.add("countryBtn");
 		countryButton.textContent = country.name;
@@ -187,7 +179,7 @@ function displayCountryAndCapitalOptions(options) {
 	});
 
 	// Add the correct capital to the list of options
-	let correctCapital = currentFlag.capital; // The capital of the correct country
+	let correctCapital = currentFlag.capital;
 	let capitalOptions = [correctCapital];
 
 	// Select random capitals for incorrect answers
@@ -224,11 +216,10 @@ function handleCountryClick() {
 
 	// If we're in "easy" mode, we check for a match immediately after selecting the country
 	if (player.difficulty === "easy") {
-		setTimeout(() => checkForMatch("easy"), 500); // Pass "easy" to the match function
+		setTimeout(() => checkForMatch("easy"), 100);
 	} else if (player.difficulty === "hard") {
-		// For "hard" mode, wait for both country and capital to be selected
 		if (selectedCountryButton && selectedCapitalButton) {
-			setTimeout(checkForMatch, 500, "hard");
+			setTimeout(checkForMatch, 100, "hard");
 		}
 	}
 }
@@ -239,22 +230,18 @@ function handleCapitalClick() {
 		selectedCapitalButton = this;
 	}
 
-	// In "hard" mode, we check for a match when both country and capital are selected
 	if (selectedCountryButton && selectedCapitalButton) {
-		setTimeout(checkForMatch, 500, "hard");
+		setTimeout(checkForMatch, 100, "hard");
 	}
 }
 
 function showGameOver() {
-	// Show the Game Over overlay
 	const gameOverOverlay = document.getElementById("gameOverOverlay");
-	gameOverOverlay.style.display = "flex"; // Show the overlay
+	gameOverOverlay.style.display = "flex";
 }
 
-// Function to check for match
 function checkForMatch(difficulty) {
 	if (difficulty === "hard") {
-		// Check if both the selected country and capital match
 		if (
 			selectedCountryButton.dataset.country === currentFlag.name &&
 			selectedCapitalButton.dataset.capital === currentFlag.capital
@@ -264,8 +251,8 @@ function checkForMatch(difficulty) {
 			updatePlayerInfo();
 		} else {
 			console.log("No match!");
-			playerLives--; // Decrement the player's lives
-			updateLivesDisplay(); // Update the hearts display
+			playerLives--;
+			updateLivesDisplay();
 
 			if (playerLives === 0) {
 				showGameOver();
@@ -280,8 +267,8 @@ function checkForMatch(difficulty) {
 			updatePlayerInfo();
 		} else {
 			console.log("No match!");
-			playerLives--; // Decrement the player's lives
-			updateLivesDisplay(); // Update the hearts display
+			playerLives--;
+			updateLivesDisplay();
 
 			if (playerLives === 0) {
 				showGameOver();
@@ -344,7 +331,6 @@ document
 		selectedCapitalButton = null;
 		player.score = 0; // Reset the player's score
 
-		// Update the player info and lives display
 		updatePlayerInfo();
 		updateLivesDisplay();
 

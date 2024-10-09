@@ -1,6 +1,31 @@
+@font-face {
+	font-family: "SourceCodePro";
+	src: url("./assets/fonts/SourceCodePro-VariableFont_wght.ttf")
+		format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "SourceCodeProItalic";
+	src: url("./assets/fonts/SourceCodePro-Italic-VariableFont_wght.ttf")
+		format("truetype");
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Inconsolata";
+	src: url("./assets/fonts/Inconsolata-VariableFont_wght.ttf")
+		format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
 body {
 	margin: 0;
 	padding: 0;
+	background-color: #271e70;
 }
 
 .screen {
@@ -26,7 +51,7 @@ body {
 }
 
 #joinScreen h2 {
-	font-family: "Poppins", sans-serif;
+	font-family: "Inconsolata", sans-serif;
 	font-size: 20px;
 	color: #800020; /* Deep Blue for the heading */
 	text-shadow: 0 0 2px #ffd700, /* Gold */ 0 0 4px #ffd700, 0 0 6px #ffd700,
@@ -109,13 +134,13 @@ body {
 
 #easyButton:hover,
 #hardButton:hover {
-	background-color: #b8860b; /* Darker Gold on hover */
-	color: #3b79bb; /* Deep Blue text on hover */
-	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700; /* Brighter gold glow on hover */
+	background-color: #b8860b;
+	color: #3b79bb;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700;
 }
 
 .game-container {
-	background-image: url(./assets/flags.jpg);
+	background-image: url(./assets/Images/game.png);
 	background-size: cover;
 	background-position: center;
 	height: 100vh;
@@ -133,68 +158,39 @@ button {
 }
 
 #startButton {
-	font-family: "Poppins", sans-serif;
-	font-size: 20px;
-	color: #ffffff; /* White text for contrast */
-	background-color: #800020; /* Burgundy background */
-	border: 2px solid #ffd700; /* Gold border */
+	color: #ffffff;
+	background-image: url(./assets/Icons/newGame.png);
+	width: 20rem;
+	height: 5rem;
+	background-position: center;
+	background-size: cover;
+	border: 2px solid #ffd700;
 	padding: 10px 20px;
 	border-radius: 5px;
 	text-transform: uppercase;
 	cursor: pointer;
-	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b;
 	transition: all 0.3s ease;
 }
 
 #startButton:hover {
-	background-color: #b8860b; /* Darker Gold on hover */
-	color: #1e6a98; /* Burgundy text on hover */
-	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700; /* Brighter gold glow on hover */
+	background-color: #b8860b;
+	color: #1e6a98;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
 .neon-title {
-	font-family: "Poppins", sans-serif;
-	font-size: 2.5rem;
-	color: #800020; /* Burgundy */
-	text-shadow: 0 0 2px #ffd700, /* Gold */ 0 0 4px #ffd700, 0 0 6px #ffd700,
-		0 0 8px #b8860b; /* Darker Gold */
+	font-family: "Inconsolata", sans-serif;
+	font-size: 3.5rem;
+	color: #00ffff;
+	text-shadow: 0 0 2px #00ffff, 0 0 4px #00ffff, 0 0 6px #00ffff,
+		0 0 8px #b8860b;
 	animation: neon-glow 1.5s ease-in-out infinite alternate;
 	text-align: center;
 	margin: 50px 0;
-}
-@media (min-width: 768px) {
-	.neon-title {
-		font-size: 4rem;
-	}
-	#startButton {
-		font-size: 30px;
-	}
-	#joinScreen h2 {
-		font-size: 30px;
-	}
-	#joinButton {
-		font-size: 30px;
-	}
-	#startScreen h2 {
-		font-size: 30px;
-	}
-	#player-info {
-		font-size: 30px;
-	}
-	.heart {
-		width: 3rem;
-		height: 3rem;
-	}
-	.countryBtn {
-		font-size: 18px;
-		margin: 15px 35px;
-	}
-	.capitalBtn {
-		font-size: 18px;
-		margin: 15px 35px;
-	}
+	letter-spacing: 10px;
 }
 
 @keyframes neon-glow {
@@ -216,7 +212,7 @@ button {
 	height: 90vh;
 	width: 80%;
 	margin: 0 auto;
-	background-color: #4396a1cb; /* Match the other screen backgrounds */
+	background-color: #4396a1cb;
 	border-radius: 10px;
 	text-align: center;
 }
@@ -238,7 +234,7 @@ button {
 	border: 2px solid #ffd700;
 	border-radius: 5px;
 	margin-bottom: 20px;
-	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b;
 }
 
 /* Styling for the list of options */
@@ -255,8 +251,8 @@ button {
 }
 
 #flagContainer li:hover {
-	background-color: #b8860b; /* Darker Gold on hover */
-	color: #3b79bb; /* Deep Blue text on hover */
+	background-color: #b8860b;
+	color: #3b79bb;
 	box-shadow: 0 0 5px #ffd700;
 }
 
@@ -268,9 +264,9 @@ button {
 #player-info {
 	font-family: "Poppins", sans-serif;
 	font-size: 15px;
-	color: #3b79bb; /* Deep Blue */
+	color: #3b79bb;
 	text-shadow: 0 0 2px #ffd700, 0 0 4px #ffd700, 0 0 6px #ffd700,
-		0 0 8px #b8860b; /* Gold and Darker Gold */
+		0 0 8px #b8860b;
 	text-align: center;
 }
 
@@ -350,7 +346,7 @@ button {
 
 .countryBtn:hover {
 	background: #1e1e1e;
-	box-shadow: 0px 0px 20px 5px rgba(0, 255, 0, 0.7); /* Neon glow effect */
+	box-shadow: 0px 0px 20px 5px rgba(0, 255, 0, 0.7);
 	color: #00ff00;
 	border-color: #00ff00;
 }
@@ -440,15 +436,15 @@ button {
 
 #startScreen.hard-mode #flagContainer {
 	display: flex;
-	flex-direction: column; /* Stack elements vertically */
+	flex-direction: column;
 	align-items: center;
-	gap: 1rem; /* Adjust the gap */
+	gap: 1rem;
 }
 
 /* Adjust the game-board layout in hard mode */
 #startScreen.hard-mode #game-board {
 	display: flex;
-	flex-direction: column; /* Stack country and capital buttons */
+	flex-direction: column;
 	align-items: center;
 	gap: 1rem;
 }
@@ -456,14 +452,14 @@ button {
 /* Reduce the button size for country and capital buttons in hard mode */
 #startScreen.hard-mode .countryBtn,
 #startScreen.hard-mode .capitalBtn {
-	font-size: 14px; /* Reduce font size */
-	padding: 8px 15px; /* Reduce padding */
-	margin: 5px; /* Reduce margin */
+	font-size: 14px;
+	padding: 8px 15px;
+	margin: 5px;
 }
 
 /* Reduce the flag image size for hard mode */
 #startScreen.hard-mode #flagImage {
-	width: 150px; /* Adjust flag image size */
+	width: 150px;
 }
 
 /* Adjust the hearts (lives) size in hard mode */
@@ -474,12 +470,12 @@ button {
 
 /* Adjust the player-info text size in hard mode */
 #startScreen.hard-mode #player-info {
-	font-size: 14px; /* Make the player info smaller */
+	font-size: 14px;
 }
 
 /* Adjust screen height for hard mode */
 #startScreen.hard-mode {
-	padding: 1rem; /* Add some padding */
+	padding: 1rem;
 }
 
 /* Full-screen overlay */
@@ -489,38 +485,38 @@ button {
 	left: 0;
 	width: 100%;
 	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+	background-color: rgba(0, 0, 0, 0.8);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	z-index: 1000; /* Ensure it is above all other elements */
+	z-index: 1000;
 }
 
 /* Game Over text styling */
 .game-over-text {
 	font-family: "Poppins", sans-serif;
 	font-size: 3rem;
-	color: #ff0000; /* Bright red color for dramatic effect */
+	color: #ff0000;
 	text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000,
 		0 0 40px #ff0000;
-	opacity: 0; /* Initially hidden */
-	animation: gameOverAnim 2s ease-in-out forwards; /* Trigger the animation */
+	opacity: 0;
+	animation: gameOverAnim 2s ease-in-out forwards;
 }
 
 /* Animation for Game Over text */
 @keyframes gameOverAnim {
 	0% {
 		opacity: 0;
-		transform: scale(0.5); /* Start smaller */
+		transform: scale(0.5);
 	}
 	50% {
 		opacity: 1;
-		transform: scale(1.2); /* Overscale for a dramatic effect */
+		transform: scale(1.2);
 	}
 	100% {
 		opacity: 1;
-		transform: scale(1); /* Settle to normal size */
+		transform: scale(1);
 	}
 }
 
@@ -528,19 +524,128 @@ button {
 .start-over-btn {
 	font-family: "Poppins", sans-serif;
 	font-size: 1.5rem;
-	color: #ffffff; /* White text for contrast */
-	background-color: #3b79bb; /* Deep Blue background */
-	border: 2px solid #ffd700; /* Gold border */
+	color: #ffffff;
+	background-color: #3b79bb;
+	border: 2px solid #ffd700;
 	padding: 10px 20px;
 	border-radius: 5px;
 	cursor: pointer;
-	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b; /* Gold shadow */
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 15px #b8860b;
 	margin-top: 20px;
 	transition: all 0.3s ease;
 }
 
 .start-over-btn:hover {
-	background-color: #b8860b; /* Darker Gold on hover */
-	color: #3b79bb; /* Deep Blue text on hover */
-	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700; /* Brighter gold glow on hover */
+	background-color: #b8860b;
+	color: #3b79bb;
+	box-shadow: 0 0 5px #ffd700, 0 0 10px #ffd700, 0 0 20px #ffd700;
+}
+
+@media (min-width: 768px) {
+	#difficultyScreen p {
+		font-size: 44px;
+	}
+	#easyButton,
+	#hardButton {
+		font-size: 34px;
+	}
+	.neon-title {
+		font-size: 6rem;
+	}
+	#startButton {
+		font-size: 30px;
+	}
+	#joinScreen h2 {
+		font-size: 30px;
+	}
+	#joinButton {
+		font-size: 30px;
+	}
+	#startScreen h2 {
+		font-size: 45px;
+		margin-bottom: 4rem;
+	}
+	#player-info {
+		font-size: 30px;
+	}
+	.heart {
+		width: 3rem;
+		height: 3rem;
+	}
+	.countryBtn {
+		font-size: 18px;
+		margin: 15px 35px;
+	}
+	.capitalBtn {
+		font-size: 18px;
+		margin: 15px 35px;
+	}
+}
+
+/* Background Colors */
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #271e70;
+}
+
+#introScreen,
+#joinScreen,
+#difficultyScreen,
+#startScreen {
+	background-color: #5527aac4;
+}
+
+/* Text Colors */
+#joinScreen h2,
+#difficultyScreen p,
+#startScreen h2 {
+	color: #2bfdaf;
+}
+
+#playerName {
+	border: 2px solid #ab196f;
+	color: #5527aa;
+}
+
+/* Button Colors */
+#joinButton,
+#easyButton,
+#hardButton,
+#startButton,
+.start-over-btn {
+	background-color: #5527aa;
+	color: #ffffff;
+	border: 2px solid #fc1057;
+}
+
+#joinButton:hover,
+#easyButton:hover,
+#hardButton:hover,
+#startButton:hover,
+.start-over-btn:hover {
+	background-color: #fc1057;
+	color: #2bfdaf;
+}
+
+.game-over-text {
+	color: #fc1057;
+}
+
+#player-info {
+	color: #2bfdaf;
+}
+
+/* Country and Capital Buttons */
+.countryBtn,
+.capitalBtn {
+	background-color: #5527aa;
+	color: #ffffff;
+	border: 2px solid #fc1057;
+}
+
+.countryBtn:hover,
+.capitalBtn:hover {
+	background-color: #fc1057;
+	color: #2bfdaf;
 }
